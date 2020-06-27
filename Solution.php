@@ -10,6 +10,17 @@ class Solution
      */
     function groupThePeople($groupSizes)
     {
+        $final = [];
+        $groups = [];
+        foreach ($groupSizes as $id => $groupSize) {
+            if (count($groups[$groupSize] ?? []) >= $groupSize) {
+                $final[] = $groups[$groupSize];
+                unset($groups[$groupSize]);
+            }
+            $groups[$groupSize][] = $id;
+        }
+        $final = array_values($final + $groups);
 
+        return $final;
     }
 }
