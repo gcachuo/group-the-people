@@ -19,7 +19,7 @@ class Solution
             }
             $groups[$groupSize][] = $id;
         }
-        $final = array_values($final + $groups);
+        $final = array_merge($final, $groups);
 
         return $final;
     }
